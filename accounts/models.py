@@ -45,8 +45,10 @@ class MyAccountManager(BaseUserManager):
 
 
 class Users(AbstractBaseUser):
+    first_name = models.CharField(verbose_name='Name', max_length=50)
+    last_name = models.CharField(verbose_name='Surname', max_length=50)
     age = models.PositiveIntegerField(default=0, blank=True, null=True)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=15, unique=True)
     date_joined = models.DateTimeField(auto_now_add=True, editable=False)
     last_login = models.DateTimeField(auto_now=True)
         
